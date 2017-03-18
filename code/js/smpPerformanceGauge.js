@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('mwpApp')
     .directive('smpPerformanceGauge', ['PerformanceScan', '$timeout',
         function(PerformanceScan, $timeout) {

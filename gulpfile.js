@@ -1,28 +1,17 @@
-'use strict';
 var extend = require('util')._extend;
 var fs = require('fs');
-var del = require('del');
-var ws = require('ws');
 var gulp = require('gulp');
 var concat = require('gulp-concat');
-var replace = require('gulp-replace');
 var minifyCss = require('gulp-minify-css');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
-var templateCache = require('gulp-angular-templatecache');
-var minifyHtml = require('gulp-minify-html');
-var filter = require('gulp-filter');
-var imagemin = require('gulp-imagemin');
 var watch = require('gulp-watch');
-var sourcemaps = require('gulp-sourcemaps');
-var gulpIf = require('gulp-if');
-var through = require('through2');
 
 var config = extend({
     codeDirectory: {
         root: './code',
         js: './code/js/*.js',
-        scss: './code/style/sass/*.scss',
+        scss: './code/style/sass/application.scss',
         css: './code/style/*.css',
         html: './code/html/*.html'
     },
@@ -260,29 +249,30 @@ function copyStaticAssets() {
 
 /* ----------------------------------------------------------------------------------------*/
 
-function buildJs () {
+gulp.task('buildJs', function () {
     return gulp.src([config.codeDirectory.js])
         .pipe(concat(config.destDirectory.jsFile))
         .pipe(gulp.dest(config.destDirectory.root))
-}
-function buildCss () {
-    return gulp.series(
-        gulp.src([config.codeDirectory.scss])
-            .pipe(sass())
-            .pipe(concat('concatSass.css'))
-            .pipe(gulp.dest(config.tmpDir)),
-        gulp.src([config.codeDirectory.css])
-            .pipe(concat('concatCss.css'))
-            .pipe(gulp.dest(config.tmpDir)),
-        gulp.src([config.tmpDir + '/*.css'])
+});
+gulp.task('compileSass', function () {
+    return gulp.src([config.codeDirectory.scss])
+        .pipe(sass())
+        .pipe(concat('concatSass.css'))
+        .pipe(gulp.dest(config.tmpDir));
+});
+gulp.task('concatCss', function () {
+    return gulp.src([config.codeDirectory.css])
+        .pipe(concat('concatCss.css'))
+        .pipe(gulp.dest(config.tmpDir));
+});
+gulp.task('buildCss', ['compileSass', 'concatCss'], function () {
+        return gulp.src([config.tmpDir + '/*.css'])
             .pipe(concat(config.destDirectory.cssFile))
-            .pipe(gulp.dest(config.destDirectory.root))
-    );
-}
-function buildHtml () {
+            .pipe(gulp.dest(config.destDirectory.root));
+});
+gulp.task('buildHtml', function () {
     return gulp.src(['index.html'])
         .pipe(gulp.dest(config.destDirectory.root));
-}
-gulp.task('default',
-    gulp.parallel(buildJs, buildCss, buildHtml)
-);
+});
+gulp.task('default',['buildJs', 'buildCss', "buildHtml"]);
+
