@@ -21,12 +21,16 @@ var through = require('through2');
 var config = extend({
     codeDirectory: {
         root: './code',
-        js: './code/js',
-        scss: './code/sass',
-        css: './app/css',
-        html: './code/html'
+        js: './code/js/*.js',
+        scss: './code/style/sass/*.scss',
+        css: './code/style/*.css',
+        html: './code/html/*.html'
     },
-    distDir: './app',
+    destDirectory: {
+        root: './app',
+        jsFile: 'application.js',
+        cssFile: 'application.css'
+    },
     tmpDir: './.tmp',
     liveReloadPort: 35729,
     liveReloadClientPort: 35729
@@ -84,7 +88,7 @@ function buildBootstrapCssDev() {
         .pipe(gulpIf(config.useSourceMaps, sourcemaps.write()))
         .pipe(gulp.dest(config.distDir + '/styles'));
 }
-function buildCss() {
+function buildCss1() {
     return gulp.src([config.srcDir + '/styles/bootstrap.scss', config.srcDir + '/styles/application.scss', config.srcDir + '/styles/signup-onboarding.scss'])
         .pipe(sass({
             includePaths: [
@@ -139,7 +143,7 @@ function buildHtmlDev() {
         // @TODO Find a fix for add new timestamp to index file so php doesn't cache it.
         .pipe(gulp.dest(config.apiDashboardIndexPath));
 }
-function buildHtml() {
+function buildHtml1() {
     var jsFilter = filter('**/*.js', {restore: true});
     var cssFilter = filter('**/*.css', {restore: true});
     var indexFilter = filter('**/index.html', {restore: true});
@@ -254,17 +258,31 @@ function copyStaticAssets() {
         .pipe(gulp.dest(config.distDir));
 }
 
+/* ----------------------------------------------------------------------------------------*/
+
+function buildJs () {
+    return gulp.src([config.codeDirectory.js])
+        .pipe(concat(config.destDirectory.jsFile))
+        .pipe(gulp.dest(config.destDirectory.root))
+}
+function buildCss () {
+    return gulp.series(
+        gulp.src([config.codeDirectory.scss])
+            .pipe(sass())
+            .pipe(concat('concatSass.css'))
+            .pipe(gulp.dest(config.tmpDir)),
+        gulp.src([config.codeDirectory.css])
+            .pipe(concat('concatCss.css'))
+            .pipe(gulp.dest(config.tmpDir)),
+        gulp.src([config.tmpDir + '/*.css'])
+            .pipe(concat(config.destDirectory.cssFile))
+            .pipe(gulp.dest(config.destDirectory.root))
+    );
+}
+function buildHtml () {
+    return gulp.src(['index.html'])
+        .pipe(gulp.dest(config.destDirectory.root));
+}
 gulp.task('default',
-    gulp.task(buildApp);
-);
-gulp.task('build',
-    gulp.series(
-        optimizeAssets
-        gulp.parallel(
-            copyStaticAssets,
-            buildTemplate,
-            buildCss
-        ),
-        buildHtml
-    )
+    gulp.parallel(buildJs, buildCss, buildHtml)
 );
