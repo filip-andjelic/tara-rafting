@@ -19,6 +19,28 @@ $_mwp_font-family-open-sans: "Open Sans", "Helvetica Neue", Helvetica, Arial, sa
   font-weight: 400;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Ornament-Banner';
+  src: url('../assets/font/banner/AdhesiveNrSevenBanners-webfont.eot');
+  src: url('../assets/font/banner/AdhesiveNrSevenBanners-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../assets/font/banner/AdhesiveNrSevenBanners-webfont.woff') format('woff'),
+  url('../assets/font/banner/AdhesiveNrSevenBanners-webfont.ttf') format('truetype'),
+  url('../assets/font/banner/AdhesiveNrSevenBanners-webfont.svg#adhesive_nr._sevenregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Yatagan';
+  src: url('../assets/font/yatagan/yataghan-webfont.eot');
+  src: url('../assets/font/yatagan/yataghan-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../assets/font/yatagan/yataghan-webfont.woff') format('woff'),
+  url('../assets/font/yatagan/yataghan-webfont.ttf') format('truetype'),
+  url('../assets/font/yatagan/yataghan-webfont.svg#yataghanregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 $font-family-godaddy: "Boing-Bold", Arial, sans-serif;
 @mixin godaddy-font(){
   font-family: $font-family-godaddy;
@@ -92,4 +114,7 @@ $_mwp_font-weight-thin: 300;
 }
 ._mwp_text-light{
   font-weight: $_mwp_font-weight-thin;
+}
+.banner-wrapper {
+  font-family: Ornament-Banner;
 }

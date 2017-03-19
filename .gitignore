@@ -40,3 +40,7 @@ jspm_packages
 legacy
 statistics
 .idea
+
+#build folders
+app
+.tmp

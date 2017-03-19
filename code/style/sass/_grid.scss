@@ -1,3 +1,11 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url('../assets/images/background-canyon.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% calc(100% + 30px);
+}
+
 .page-container-990 {
   max-width: 990px;
 }
@@ -386,3 +394,5 @@ i.row-big-checkmark {
 ._mwp_grid-full-width {
   @include flex(0, 0, 100%);
 }
+
+@import "window-layout-grid";

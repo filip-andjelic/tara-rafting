@@ -26,7 +26,6 @@
   }
 
 }
-
 @mixin arrow-bottom($size, $back, $front) {
 
   &:before, &:after {
@@ -53,7 +52,6 @@
   }
 
 }
-
 @mixin arrow-left($size, $back, $front) {
 
   &:before, &:after {
@@ -80,7 +78,6 @@
   }
 
 }
-
 @mixin arrow-right($size, $back) {
   &:before, &:after {
     content: '';
@@ -96,7 +93,6 @@
     z-index: 10;
   }
 }
-
 @mixin toggle-arrow($state, $color, $side: 'left', $size: 5px) {
   @if $state == 'init' {
     &:after {
@@ -132,7 +128,6 @@
 }
 
 // Animation and transition mixins
-
 @mixin mwp-transition($transition-properties, $transition-duration) {
   -webkit-transition-property: $transition-properties;
   -webkit-transition-duration: $transition-duration;
@@ -143,13 +138,11 @@
   transition-property: $transition-properties;
   transition-duration: $transition-duration;
 }
-
 @mixin text-overflow-ellipsis(){
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-
 @mixin blur($blur){
   -webkit-filter: blur($blur);
   -moz-filter: blur($blur);
@@ -157,75 +150,6 @@
   -ms-filter: blur($blur);
   filter: blur($blur);
 }
-
-.apps-icon {
-  background-repeat: no-repeat;
-  display: inline-block;
-}
-
-@media only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (min-device-pixel-ratio: 2) {
-  .apps-icon {
-  }
-}
-
-
-@mixin menu-icon() {
-  background: rgba(30, 30, 30, 0.3);
-
-  &:hover {
-    background: rgba(30, 30, 30, 0.7);
-  }
-
-  &.pinned {
-    background-color: rgba(162, 204, 229, 0.4);
-    @include box-shadow(0 1px 1px 0 rgba(0, 0, 0, 0.6), 0 -1px 1px 0 rgba(255, 255, 255, 0.8));
-    &:before {
-      font-family: $icon-font-name;
-      position: absolute;
-      bottom: 2px;
-      right: 6px;
-      font-size: 16px;
-      color: #86c14d;
-      text-shadow: -1px -1px 1px rgba(26, 26, 26, 0.5);
-    }
-  }
-  &.coming-soon {
-    opacity: 0.3;
-    cursor: default !important;
-  }
-}
-
-@mixin status-border-left($color) {
-  border-left: 5px solid $color;
-}
-
-@mixin lighter-text-shadow() {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-}
-
-@mixin darker-text-shadow() {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-}
-
-@mixin menu-divider () {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  @include box-shadow(0px 1px 0px 0px #466169);
-}
-
-@mixin light-shadow(){
-  @include box-shadow(0px 1px 0px 1px rgba(209, 209, 209, 0.2));
-}
-//
-//@mixin user-select($state) {
-//  -webkit-touch-callout: $state;
-//  -webkit-user-select: $state;
-//  -khtml-user-select: $state;
-//  -moz-user-select: $state;
-//  -ms-user-select: $state;
-//  user-select: $state;
-//}
-
 @mixin transform($transform...) {
   -webkit-transform: $transform;
   -moz-transform: $transform;
@@ -236,37 +160,29 @@ only screen and (min-device-pixel-ratio: 2) {
 @mixin translateX($translate) {
   @include transform(translateX($translate));
 }
-
 @mixin keyframes($name) {
   @-moz-keyframes #{$name} {
     @content;
   }
-
   @-webkit-keyframes #{$name} {
     @content;
   }
-
   @-o-keyframes #{$name} {
     @content;
   }
-
   @-ms-keyframes #{$name} {
     @content;
   }
-
   @-khtml-keyframes #{$name} {
     @content;
   }
-
   @keyframes #{$name} {
     @content;
   }
 }
-
 @mixin scale3d($scale-x: 1, $scale-y: 1, $scale-z: 1) {
   @include transform(scale3d($scale-x, $scale-y, $scale-z));
 }
-
 @mixin pretty-scrollbar {
   /** Scrollbar */
   &::-webkit-scrollbar {
@@ -291,83 +207,67 @@ only screen and (min-device-pixel-ratio: 2) {
   -webkit-appearance: $appearance;
   appearance: $appearance;
 }
-
 @mixin display-flex() {
   display: flex;
   display: -webkit-flex;
 }
-
 @mixin display-inline-flex() {
   display: inline-flex;
   display: -webkit-inline-flex;
 }
-
 .display-flex{
   @include display-flex;
 }
-
 .display-inline-flex{
   @include display-inline-flex;
 }
-
 @mixin flex-basis($basis) {
   -webkit-flex-basis: $basis;
   flex-basis: $basis;
 }
-
 @mixin flex($grow: 0, $shrink: 0, $basis: 0) {
   -webkit-flex: $grow $shrink $basis;
   flex: $grow $shrink $basis;
 }
-
 @mixin flex-grow($grow) {
   -webkit-flex-grow: $grow;
   flex-grow: $grow;
 }
-
 @mixin flex-shrink($shrink) {
   -webkit-flex-shrink: $shrink;
   flex-shrink: $shrink;
 }
-
 @mixin flex-align-content($align) {
   align-content: $align;
   -webkit-align-content: $align;
 }
-
 @mixin flex-align-items($align) {
   align-items: $align;
   -webkit-align-items: $align;
 }
-
 @mixin flex-align-self($align) {
   align-self: $align;
   -webkit-align-self: $align;
 }
-
 @mixin flex-direction($direction) {
   flex-direction: $direction;
   -webkit-flex-direction: $direction;
 }
-
 @mixin flex-wrap($wrap) {
   flex-wrap: $wrap;
   -webkit-flex-wrap: $wrap;
   -ms-flex-wrap: $wrap;
 }
-
 @mixin flex-justify-content($justify) {
   justify-content: $justify;
   -webkit-justify-content: $justify;
 }
-
 @mixin flex-center() {
   @include display-flex();
   @include flex-direction(column);
   @include flex-justify-content(center);
   @include flex-align-items(center);
 }
-
 @for $i from 1 through 12 {
   ._mwp_grid-#{$i} {
     @include flex($i, $i, 0);
