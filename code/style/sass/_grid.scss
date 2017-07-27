@@ -1,11 +1,7 @@
-body {
-  padding: 0;
-  margin: 0;
-  background-image: url('../assets/images/background-canyon.jpg');
-  background-repeat: no-repeat;
-  background-size: 100% calc(100% + 30px);
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
 }
-
 .page-container-990 {
   max-width: 990px;
 }

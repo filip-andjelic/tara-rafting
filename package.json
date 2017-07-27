@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/filip-andjelic/tara-rafting.git"
@@ -17,27 +14,27 @@
   },
   "homepage": "https://github.com/filip-andjelic/tara-rafting#readme",
   "devDependencies": {
-    "gulp": "^4.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-connect": "^5.0.0",
-    "gulp-file": "^0.3.0",
-    "gulp-foreach": "^0.1.0",
-    "gulp-sass": "^3.0.0",
-    "gulp-uglify": "^2.0.1",
-    "gulp-util": "^3.0.8",
-    "gulp-watch": "^4.3.11",
-    "merge-stream": "^1.0.1",
     "angular": "1.4.8",
     "angular-sanitize": "1.4.8",
     "angular-ui-router": "0.2.15",
     "animate-sass": "~0.6.4",
     "font-awesome": "4.2.0",
+    "gulp": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-file": "^0.3.0",
+    "gulp-foreach": "^0.1.0",
+    "gulp-imagemin": "*",
+    "gulp-minify-css": "*",
+    "gulp-sass": "^3.0.0",
+    "gulp-sourcemaps": "*",
+    "gulp-uglify": "^2.0.1",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
     "jquery": "2.1.1",
     "lodash": "3.10.1",
     "lodash-math": "*",
     "markdown": "~0.5.0",
-    "gulp-minify-css": "*",
-    "gulp-imagemin": "*",
-    "gulp-sourcemaps": "*"
+    "merge-stream": "^1.0.1"
   }
 }

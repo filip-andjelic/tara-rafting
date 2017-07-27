@@ -115,6 +115,21 @@ $_mwp_font-weight-thin: 300;
 ._mwp_text-light{
   font-weight: $_mwp_font-weight-thin;
 }
+/* SUGGESTED BANNERS - CONTENT VALUE
+ *   e, h, k
+ */
 .banner-wrapper {
-  font-family: Ornament-Banner;
+  font-family: "Ornament-Banner", Arial;
+}
+
+.icon {
+  display: inline-block;
+
+  &.fa-tent {
+    background-image: url('../assets/images/Tent-48.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 40px;
+    height: 30px;
+  }
 }

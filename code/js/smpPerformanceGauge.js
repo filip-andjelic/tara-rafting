@@ -1,4 +1,4 @@
-angular.module('mwpApp')
+angular.module('archApp')
     .directive('smpPerformanceGauge', ['PerformanceScan', '$timeout',
         function(PerformanceScan, $timeout) {
             return {

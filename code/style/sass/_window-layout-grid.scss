@@ -1,16 +1,23 @@
+$main-app-background-picture: '../assets/images/background-canyon.jpg';
+
 .window-layout-grid {
+  $window-margin: 25px;
+  $window-width: calc(50% - #{$window-margin});
+  $window-height: 50%;
+  $window-min-width: 385px;
+  $window-min-height: 250px;
+  $open-window-Y: 6%;
+  $open-window-X: 10%;
+  $open-window-width: 75%;
+  $open-window-height: 80%;
+
   min-width: 800px;
   min-height: 550px;
   position: relative;
   font-family: $application-font-family;
   @include display-flex;
   @include flex-wrap(wrap);
-  $window-margin: 25px;
-  $window-width: calc(50% - #{$window-margin});
-  $window-height: calc(50% - #{$window-margin});
-  $window-min-width: 385px;
-  $window-min-height: 250px;
-  margin: calc(60px - #{$window-margin});
+  margin: 20px calc(60px - #{$window-margin});
 
   .window-wrapper {
     width: $window-width;
@@ -19,23 +26,31 @@
     min-height: $window-min-height;
     background-color: $box-bg-color;
     margin: $window-margin;
+    margin-bottom: 0;
     @include flex(1, 1, 0);
+    @include transition(all 3s);
   }
   .open-window-wrapper {
     position: absolute;
-    top: 6%;
-    left: 10%;
+    top: $open-window-Y;
+    left: $open-window-X;
     background-color: $box-bg-color;
-    width: 75%;
-    height: 80%;
+    width: $open-window-width;
+    height: $open-window-height;
     border: 5px solid $border-light-color;
+
+    .window-container {
+      min-height: 480px;
+      max-height: calc(100% - 20px);
+      overflow-y: scroll;
+    }
   }
   .logo-wrapper {
     width: 330px;
     height: 230px;
     position: absolute;
     top: -75px;
-    left: 50%;
+    left: calc(50% + 20px);
     margin-left: -180px;
     z-index: 2;
 
@@ -47,4 +62,128 @@
       background-repeat: no-repeat;
     }
   }
+  .navigation-bar {
+    position: absolute;
+    z-index: 3;
+    top: calc(#{$open-window-Y} - 15px);
+    color: $color_orange-light;
+    @include transition(all 0.4s);
+
+    .banner-wrapper {
+      font-size: 120px;
+    }
+    .navigation-label {
+      position: absolute;
+      bottom: 27px;
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      color: black;
+    }
+    &.left {
+      left: calc(#{$open-window-width} / 5);
+    }
+    &.right {
+      right: calc(#{$open-window-width} / 5);
+    }
+    &:hover {
+      margin-top: -10px;
+      cursor: pointer;
+
+      .link-label {
+        color: $color_clean-blue;
+      }
+    }
+  }
+  .main-title {
+    margin-top: 15px;
+    margin-left: -10px;
+    @include display-flex;
+    @include flex-center;
+
+    .title-content {
+      font-size: 26px;
+
+      .main-text {
+        font-size: 28px;
+      }
+      &:not(:first-of-type) {
+        margin-top: 0;
+      }
+    }
+  }
+  .main-content {
+    height: 100%;
+    width: 100%;
+    min-height: 300px;
+    max-height: 90%;
+    margin-top: -50px;
+    overflow: scroll;
+    @include display-flex;
+  }
+  .link-label {
+    cursor: pointer;
+    box-sizing: border-box;
+    padding: 10px;
+    @include transition(all 0.3s);
+  }
+  .image-wrapper {
+    border: 1px solid $border-light-color;
+    overflow: hidden;
+    position: relative;
+    margin-top: 70px;
+    @include border-radius(6px);
+
+    .crop-image-container {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: url($main-app-background-picture);
+      background-size: 350% 180%;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+  }
+  .text-wrapper {
+    padding: 0 10px;
+    font-size: 13px;
+    line-height: 18px;
+
+    .text-paragraph {
+        font-family: serif;
+        font-size: 14px;
+        padding: 0 20px;
+        text-align: center;
+    }
+  }
+  .text-header {
+    text-align: center;
+    font-weight: 600;
+    padding-top: 5px;
+    margin-bottom: 15px;
+  }
+  .column-medium {
+    max-width: 30%;
+    @include flex(1, 1, 0);
+  }
+  .column-large {
+    max-width: 50%;
+    @include flex(1, 1, 0);
+  }
+  .column-middle {
+    $border: 1px solid gray;
+    border-left: $border;
+    border-right: $border;
+    margin-top: 65px;
+  }
+}
+body {
+  padding: 0;
+  margin: 0;
+  background-image: url($main-app-background-picture);
+  background-repeat: no-repeat;
+  background-size: 100% calc(100% + 30px);
 }

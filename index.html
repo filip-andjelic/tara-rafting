@@ -2,29 +2,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Tara Rafting Camp - Tri Rijeke</title>
-    <!-- @TODO make gulp dynamic load of .js and .css files -->
     <script type="text/javascript" src="application.js"></script>
     <link rel="stylesheet" type="text/css" href="application.css">
 </head>
 <body>
-    <div id="application-wrapper">
-        <div class="application-container window-layout-grid">
+    <div  ng-app="archApp" id="application-wrapper">
+        <div ng-controller="ArchController" class="application-container window-layout-grid">
             <div class="logo-wrapper">
                 <div class="logo-placeholder"></div>
+            </div>
+            <div class="navigation-bar right">
+                <div class="banner-wrapper">E</div>
+                <div ng-click="switchPage('gallery')" class="navigation-label link-label">GALLERY</div>
+            </div>
+            <div class="navigation-bar left">
+                <div class="banner-wrapper">E</div>
+                <div class="navigation-label link-label">CONTACT US</div>
             </div>
             <div class="window-wrapper">
                 <div class="window-container"></div>
             </div>
-            <div class="window-wrapper open-window-wrapper">
+            <div ng-controller="LandingPage" class="window-wrapper open-window-wrapper">
                 <div class="window-container">
-                    <span class="banner-wrapper">10</span>
-                    <span class="">10</span>
+                    <div class="main-title">
+                        <h1 class="title-content">Rafting <i class="icon fa-tent"></i> Camp</h1>
+                        <h1 class="title-content main-text">"TRI RIJEKE"</h1>
+                    </div>
+                    <div class="main-content">
+                        <div class="column-medium text-wrapper">
+                            <div class="text-header">{{whyContent.header}}</div>
+                            <div class="text-paragraph">{{whyContent.paragraph}}</div>
+                        </div>
+                        <div class="column-medium column-middle text-wrapper">
+                            <div class="text-header">{{whatContent.header}}</div>
+                            <div class="text-paragraph">{{whatContent.paragraph}}</div>
+                        </div>
+                        <div class="column-medium text-wrapper">
+                            <div class="text-header">{{whoContent.header}}</div>
+                            <div class="text-paragraph">{{whoContent.paragraph}}</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="window-wrapper">
                 <div class="window-container"></div>
             </div>
-            <div class="window-wrapper">
+            <div id="gallery" class="window-wrapper">
                 <div class="window-container"></div>
             </div>
             <div class="window-wrapper">
